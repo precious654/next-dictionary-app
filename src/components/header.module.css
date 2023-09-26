@@ -1,5 +1,5 @@
 .header{
-    margin-block-start: 0.8rem;
+    margin-block-start: 1rem;
 }
 
 .icon{
@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-block-start: 0.7rem;
+    margin-block-start: 1.5rem;
 }
 
 .logo{

@@ -35,11 +35,17 @@ input{
 
 @media(max-width: 768px){
   body{
-    inline-size: 90%;
+    inline-size: 95%;
   }
 
   input{
     font-size: 9px;
   }
 
+}
+
+@media (min-width: 767px) and (max-width: 1100px) {
+  body{
+    inline-size: 80%;
+  }
 }

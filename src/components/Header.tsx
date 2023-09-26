@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import styles from './header.module.css';
 import { Gowun_Dodum } from 'next/font/google';
 import { Montserrat } from 'next/font/google';
+import {motion} from 'framer-motion'
 
 const gowun = Gowun_Dodum({
     weight: ["400"],
@@ -17,7 +18,8 @@ const montserrat = Montserrat({
 
 export default function Header() {
 
-    const[icon, setIcon] = React.useState("ph:sun-light");
+    const[icon, setIcon] = React.useState("ph:moon-light");
+    const[word, setWord] = React.useState("");
 
     const toggle = () => {
         if(icon == "ph:sun-light") {
@@ -27,8 +29,25 @@ export default function Header() {
         }
     }
 
+    const handleChange = (event: any) => {
+        setWord(event?.target.value);
+    }
+
+    const handleSubmit = async (event: any) => {
+        event.preventDefault();
+
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const data = await response.json();
+        console.log(data);
+    }
+
   return (
-    <header className={styles.header}>
+    <motion.header 
+    initial={{y: 0, opacity: 0}}
+    animate={{y: 10, opacity: 1}}
+    transition={{ ease: "linear",duration: 1}}
+    className={styles.header}
+    >
         <div className={styles.icon}>
             <button onClick={toggle}>
                 <Icon icon={icon} height={30}/>
@@ -40,8 +59,15 @@ export default function Header() {
                 <Icon icon="mdi-light:book" height={27}/>
                 <p className={gowun.className}>Dictionary</p>
             </div>
-            <form className={styles.form}>
-                <input type="text" placeholder='enter text...' className={montserrat.className}/>
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <input 
+                type="text" 
+                placeholder='enter text...' 
+                className={montserrat.className}
+                name='word'
+                value={word}
+                onChange={handleChange}
+                />
                 <button className={styles.formicon}>
                     <Icon icon="ic:twotone-search" height={20}/>
                 </button>
@@ -49,6 +75,6 @@ export default function Header() {
         </nav>
         
         <div className={styles.vertical}></div>
-    </header>
+    </motion.header>
   )
 }

@@ -1,0 +1,8 @@
+.word{
+    display: flex;
+    justify-content: space-between;
+}
+
+.word h1{
+    margin-block-end: 1rem;
+}
