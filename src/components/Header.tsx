@@ -2,9 +2,11 @@
 import React from 'react'
 import { Icon } from '@iconify/react';
 import styles from './header.module.css';
-import { Gowun_Dodum } from 'next/font/google';
-import { Montserrat } from 'next/font/google';
-import {motion} from 'framer-motion'
+import { Gowun_Dodum, Montserrat } from 'next/font/google';
+import {motion} from 'framer-motion';
+import { getWord } from '@/redux/wordSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
 
 const gowun = Gowun_Dodum({
     weight: ["400"],
@@ -20,6 +22,8 @@ export default function Header() {
 
     const[icon, setIcon] = React.useState("ph:moon-light");
     const[word, setWord] = React.useState("");
+
+    const dispatch = useDispatch<AppDispatch>();
 
     const toggle = () => {
         if(icon == "ph:sun-light") {
@@ -38,7 +42,7 @@ export default function Header() {
 
         const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
         const data = await response.json();
-        console.log(data);
+        dispatch(getWord(data));
     }
 
   return (
