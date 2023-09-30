@@ -2,3 +2,28 @@
     display: flex;
     justify-content: space-between;
 }
+
+.definitions{
+    margin-block-start: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block-end: 3rem;
+}
+
+.definitions h3{
+    text-transform: capitalize;
+}
+
+.definitions ul{
+    margin-block-start: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+@media(max-width: 500px) {
+    .definitions ul{
+        padding-inline-start: 1rem;
+    }
+}
