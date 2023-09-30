@@ -1,8 +1,9 @@
 .word{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .word h1{
-    margin-block-end: 1rem;
+    text-transform: capitalize;
 }
