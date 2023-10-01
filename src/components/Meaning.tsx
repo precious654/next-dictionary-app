@@ -13,9 +13,7 @@ const poppins = Poppins({
 });
 
 export default function Meaning() {
-
   const word = useAppSelector((state) => state.wordReducer.value.word);
-  console.log( word );
 
   const playAudio = () => {
     const audio = word[0].phonetics.filter( (item: any) => item.audio !== "");

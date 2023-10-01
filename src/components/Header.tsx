@@ -20,18 +20,9 @@ const montserrat = Montserrat({
 
 export default function Header() {
 
-    const[icon, setIcon] = React.useState("ph:moon-light");
     const[word, setWord] = React.useState("");
 
     const dispatch = useDispatch<AppDispatch>();
-
-    const toggle = () => {
-        if(icon == "ph:sun-light") {
-            setIcon("ph:moon-light")
-        } else{
-            setIcon("ph:sun-light")
-        }
-    }
 
     const handleChange = (event: any) => {
         setWord(event?.target.value);
@@ -52,12 +43,6 @@ export default function Header() {
     transition={{ ease: "linear",duration: 1}}
     className={styles.header}
     >
-        <div className={styles.icon}>
-            <button onClick={toggle}>
-                <Icon icon={icon} height={30}/>
-            </button>
-        </div>
-
         <nav className={styles.nav}>
             <div className={styles.logo}>
                 <Icon icon="mdi-light:book" height={27}/>
@@ -73,7 +58,7 @@ export default function Header() {
                 onChange={handleChange}
                 />
                 <button className={styles.formicon}>
-                    <Icon icon="ic:twotone-search" height={20}/>
+                    <Icon icon="ic:twotone-search" color="#333333" height={20}/>
                 </button>
             </form>
         </nav>
