@@ -20,6 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <meta 
+      name='viewport' 
+      content='width=device-width, inital-scale=1, maximum-scale=1, user-scalable=0'
+      />
       <body className={montserrat.className}>
         <ReduxProvider>
           <ThemeProvide>
