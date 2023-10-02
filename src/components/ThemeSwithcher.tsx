@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 export default function ThemeSwithcher() {
 
     const[icon, setIcon] = React.useState("ph:moon-light");
-    const {theme, setTheme} = useTheme();
+    let {theme, setTheme} = useTheme();
 
     const toggle = () => {
         if(icon == "ph:sun-light") {
